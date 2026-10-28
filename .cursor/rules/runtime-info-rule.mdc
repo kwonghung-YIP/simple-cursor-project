@@ -1,0 +1,23 @@
+---
+description: Instructs a sub-agent to inspect its system context and output the current conversation's LLM provider and model details in a standardized JSON schema.
+globs: ""
+alwaysApply: false
+---
+
+# LLM Metadata Reporter Rule
+
+When this rule is triggered, inspect your runtime context, active model parameters, and system instructions to identify the active LLM provider and model powering the current session.
+
+---
+
+## Instructions
+
+1. **Information Retrieval:**
+   - Identify the primary **LLM Provider** (e.g., Anthropic, OpenAI, Google).
+   - Identify the exact **Model Identifier / Name** (e.g., `claude-3-5-sonnet-20241022`, `gpt-4o`, `gemini-1.5-pro`).
+   - Collect secondary context metadata including **timestamp (UTC)**, **context window capabilities**, and **supported features** (e.g., vision, code execution, web search).
+
+2. **Output Format Requirement:**
+   - Respond **ONLY** with a valid JSON block complies with the `references/runtime-info-output.json` json schema and enclosed in a triple-backtick ```json code block.
+   - Do not include conversational preambles, intros, or markdown text outside the JSON block unless requested.
+

@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "provider": {
+      "type": "string",
+      "description": "The service provider or creator of the model (e.g., Anthropic, OpenAI, Google)."
+    },
+    "model": {
+      "type": "string",
+      "description": "The explicit model version/name being utilized in the active session."
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "timestamp_utc": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Current ISO 8601 timestamp in UTC."
+        },
+        "features": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Active capabilities enabled in the current context (e.g., vision, web_search, tools)."
+        }
+      },
+      "required": ["timestamp_utc", "features"]
+    }
+  },
+  "required": ["provider", "model", "metadata"]
+}
